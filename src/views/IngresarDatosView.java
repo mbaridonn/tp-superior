@@ -22,20 +22,19 @@ public class IngresarDatosView extends JDialog {
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
-		
+
 		JButton btnNewButton = new JButton("Aproximar mediante");
 		btnNewButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//setVisible(false);
-				IngresarDatosView ingresarDatosView = new IngresarDatosView();
-				ingresarDatosView.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(10, 11, 230, 23);
 		contentPanel.add(btnNewButton);
-		
+
 		JButton btnNewButton_1 = new JButton("Graficar nube de puntos");
 		btnNewButton_1.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
