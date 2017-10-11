@@ -34,11 +34,11 @@ public class IngresarDatosView extends JDialog {
 		contentPanel.add(scrollPane);
 
 		String[] columnNames = { "x", "f(x)"};
-		Object[][] data = { { 1, 2 }, 
+		Integer[][] data = { { 1, 2 }, 
 				{ 3, 4 }, 
 				{ 5, 6 }};
 
-		DefaultTableModel model = new DefaultTableModel(data, columnNames); //agregar data y columnNames al constructor
+		DefaultTableModel model = new DefaultTableModel(data, columnNames);
 		table = new JTable(model);
 		scrollPane.setViewportView(table);
 		
@@ -46,9 +46,8 @@ public class IngresarDatosView extends JDialog {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
-				ingresarDatosController.setTable(table);
-				ingresarDatosController.mostrarValores();
+				RectaMinimosCuadradosView rectaMinimosCuadradosView = new RectaMinimosCuadradosView();
+				rectaMinimosCuadradosView.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(10, 176, 230, 23);
@@ -58,7 +57,9 @@ public class IngresarDatosView extends JDialog {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
+				ingresarDatosController.setTable(table);
+				ingresarDatosController.mostrarValores();
 			}
 		});
 		btnNewButton_1.setBounds(10, 210, 230, 23);
