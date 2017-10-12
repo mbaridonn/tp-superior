@@ -3,13 +3,12 @@ package controllers;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import views.RectaMinimosCuadradosView;
+import model.RectaMinimosCuadrados;
 
 public class IngresarDatosController {
 
 	private static IngresarDatosController singleton = new IngresarDatosController();
 	private JTable table;
-	//private RectaMinimosCuadradosView rectaMinimosCuadradosView = new RectaMinimosCuadradosView();
 	
 	public static IngresarDatosController getInstance() {
 		return singleton;
@@ -29,7 +28,7 @@ public class IngresarDatosController {
 		System.out.println(table.getModel().getValueAt(2, 1));
 	}
 	
-	public JTable obtenerTabla() {
+	public JTable obtenerTablaSegun(RectaMinimosCuadrados rectaMinimosCuadrados) { //tiene que ser una interfaz "MetodoCalculo"
 		String[] columnNames = { "x", "f(x)"};
 		Integer[][] data = { { 999, 999 }, 
 				{ 999, 999 }, 

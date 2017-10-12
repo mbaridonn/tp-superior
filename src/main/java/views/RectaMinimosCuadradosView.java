@@ -5,16 +5,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import controllers.IngresarDatosController;
+import model.RectaMinimosCuadrados;
 
 public class RectaMinimosCuadradosView extends JDialog{
 	
 	private JPanel contentPanel;
 	private JTable table;
 	private JScrollPane scrollPane;
-	private IngresarDatosController ingresarDatosController = new IngresarDatosController();
+	private IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
 
 	public RectaMinimosCuadradosView() {
 		setTitle("Recta Minimos Cuadrados");
@@ -28,7 +28,9 @@ public class RectaMinimosCuadradosView extends JDialog{
 		scrollPane.setBounds(10, 21, 230, 144);
 		contentPanel.add(scrollPane);
 
-		table = ingresarDatosController.obtenerTabla();
+		table = ingresarDatosController.obtenerTablaSegun(new RectaMinimosCuadrados());
+		//System.out.println("AAAAA");
+		//ingresarDatosController.mostrarValores();
 		scrollPane.setViewportView(table);
 	}
 }

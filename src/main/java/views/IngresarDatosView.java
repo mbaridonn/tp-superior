@@ -42,6 +42,9 @@ public class IngresarDatosView extends JDialog {
 		table = new JTable(model);
 		scrollPane.setViewportView(table);
 		
+		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
+		ingresarDatosController.setTable(table);
+		
 		JButton btnNewButton = new JButton("Aproximar mediante");
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
@@ -57,8 +60,6 @@ public class IngresarDatosView extends JDialog {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
-				ingresarDatosController.setTable(table);
 				ingresarDatosController.mostrarValores();
 			}
 		});
