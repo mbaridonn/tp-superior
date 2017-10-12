@@ -1,5 +1,6 @@
 package views;
 
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -7,7 +8,6 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
 import controllers.IngresarDatosController;
-import model.RectaMinimosCuadrados;
 
 public class RectaMinimosCuadradosView extends JDialog{
 	
@@ -24,13 +24,17 @@ public class RectaMinimosCuadradosView extends JDialog{
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 		
-		scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 21, 230, 144);
-		contentPanel.add(scrollPane);
-
-		table = ingresarDatosController.obtenerTablaSegun(new RectaMinimosCuadrados());
-		//System.out.println("AAAAA");
-		//ingresarDatosController.mostrarValores();
-		scrollPane.setViewportView(table);
+		JButton btnNewButton = new JButton("Mostrar funcion");
+		btnNewButton.setBounds(12, 13, 224, 25);
+		contentPanel.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Obtener calculo");
+		btnNewButton_1.setBounds(12, 51, 224, 25);
+		contentPanel.add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Graficar");
+		btnNewButton_2.setBounds(12, 89, 224, 25);
+		contentPanel.add(btnNewButton_2);
+		
 	}
 }

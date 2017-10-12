@@ -55,15 +55,5 @@ public class IngresarDatosView extends JDialog {
 		});
 		btnNewButton.setBounds(10, 176, 230, 23);
 		contentPanel.add(btnNewButton);
-
-		JButton btnNewButton_1 = new JButton("Graficar nube de puntos");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ingresarDatosController.mostrarValores();
-			}
-		});
-		btnNewButton_1.setBounds(10, 210, 230, 23);
-		contentPanel.add(btnNewButton_1);
 	}
 }
