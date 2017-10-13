@@ -1,23 +1,19 @@
 package views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-import controllers.IngresarDatosController;
-
-public class RectaMinimosCuadradosView extends JDialog{
+public class MenuResultadosView extends JDialog{
 	
 	private JPanel contentPanel;
-	private JTable table;
-	private JScrollPane scrollPane;
-	private IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
 
-	public RectaMinimosCuadradosView() {
-		setTitle("Recta Minimos Cuadrados");
+	public MenuResultadosView() {
+		setTitle("Menu Resultados");
 		setBounds(100, 100, 266, 300);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -29,6 +25,13 @@ public class RectaMinimosCuadradosView extends JDialog{
 		contentPanel.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Obtener calculo");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				CalculoView calculoView = new CalculoView();
+				calculoView.setVisible(true);
+			}
+		});
 		btnNewButton_1.setBounds(12, 51, 224, 25);
 		contentPanel.add(btnNewButton_1);
 		
@@ -37,4 +40,5 @@ public class RectaMinimosCuadradosView extends JDialog{
 		contentPanel.add(btnNewButton_2);
 		
 	}
+
 }

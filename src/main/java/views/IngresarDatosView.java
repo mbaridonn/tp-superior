@@ -43,14 +43,14 @@ public class IngresarDatosView extends JDialog {
 		scrollPane.setViewportView(table);
 		
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
-		ingresarDatosController.setTable(table);
+		ingresarDatosController.setTableModel(model);
 		
 		JButton btnNewButton = new JButton("Aproximar mediante");
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				RectaMinimosCuadradosView rectaMinimosCuadradosView = new RectaMinimosCuadradosView();
-				rectaMinimosCuadradosView.setVisible(true);
+				MenuResultadosView menuResultadosView = new MenuResultadosView();
+				menuResultadosView.setVisible(true);
 			}
 		});
 		btnNewButton.setBounds(10, 176, 230, 23);
