@@ -25,7 +25,7 @@ public class CalculoView extends JDialog {
 		scrollPane.setBounds(10, 21, 230, 144);
 		contentPanel.add(scrollPane);
 
-		DefaultTableModel tableModel = ingresarDatosController.getModel();
+		DefaultTableModel tableModel = ingresarDatosController.getTableModel();
 		Integer dataTercerColumna[] = completarTercerColumna(tableModel);
 		tableModel.addColumn("x^2", dataTercerColumna);
 		Integer dataCuartaColumna[] = completarCuartaColumna(tableModel);
@@ -33,6 +33,8 @@ public class CalculoView extends JDialog {
 		tableModel.addRow(obtenerSumatorias(tableModel));
 		JTable table = new JTable(tableModel);
 		scrollPane.setViewportView(table);
+		
+		ingresarDatosController.setTableModel(tableModel);
 	}
 	
 	private Integer[] obtenerSumatorias(DefaultTableModel tableModel) {

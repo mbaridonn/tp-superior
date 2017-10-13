@@ -11,7 +11,7 @@ public class IngresarDatosController {
 		this.tableModel = tableModel;		
 	}
 	
-	public DefaultTableModel getModel() {
+	public DefaultTableModel getTableModel() {
 		return tableModel;
 	}
 

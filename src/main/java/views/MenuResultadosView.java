@@ -9,18 +9,23 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 public class MenuResultadosView extends JDialog{
-	
-	private JPanel contentPanel;
 
 	public MenuResultadosView() {
 		setTitle("Menu Resultados");
 		setBounds(100, 100, 266, 300);
-		contentPanel = new JPanel();
+		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Mostrar funcion");
+		btnNewButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				MostrarFuncionView mostrarFuncionView = new MostrarFuncionView();
+				mostrarFuncionView.setVisible(true);
+			}
+		});
 		btnNewButton.setBounds(12, 13, 224, 25);
 		contentPanel.add(btnNewButton);
 		
