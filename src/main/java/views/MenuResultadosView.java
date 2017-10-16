@@ -41,6 +41,12 @@ public class MenuResultadosView extends JDialog{
 		contentPanel.add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("Graficar");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GraficoView graficoView = new GraficoView();
+				graficoView.setVisible(true);
+			}
+		});
 		btnNewButton_2.setBounds(12, 89, 224, 25);
 		contentPanel.add(btnNewButton_2);
 		
