@@ -18,37 +18,37 @@ public class MenuResultadosView extends JDialog{
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Mostrar funcion");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnMostrarFuncion = new JButton("Mostrar funcion");
+		btnMostrarFuncion.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				MostrarFuncionView mostrarFuncionView = new MostrarFuncionView();
 				mostrarFuncionView.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(12, 13, 224, 25);
-		contentPanel.add(btnNewButton);
+		btnMostrarFuncion.setBounds(12, 13, 224, 25);
+		contentPanel.add(btnMostrarFuncion);
 		
-		JButton btnNewButton_1 = new JButton("Obtener calculo");
-		btnNewButton_1.addActionListener(new ActionListener() {
+		JButton btnObtenerCalculo = new JButton("Obtener calculo");
+		btnObtenerCalculo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				CalculoView calculoView = new CalculoView();
 				calculoView.setVisible(true);
 			}
 		});
-		btnNewButton_1.setBounds(12, 51, 224, 25);
-		contentPanel.add(btnNewButton_1);
+		btnObtenerCalculo.setBounds(12, 51, 224, 25);
+		contentPanel.add(btnObtenerCalculo);
 		
-		JButton btnNewButton_2 = new JButton("Graficar");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnGraficar = new JButton("Graficar");
+		btnGraficar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				GraficoView graficoView = new GraficoView();
 				graficoView.setVisible(true);
 			}
 		});
-		btnNewButton_2.setBounds(12, 89, 224, 25);
-		contentPanel.add(btnNewButton_2);
+		btnGraficar.setBounds(12, 89, 224, 25);
+		contentPanel.add(btnGraficar);
 		
 	}
 

@@ -3,9 +3,11 @@ package controllers;
 import javax.swing.table.DefaultTableModel;
 
 import Jama.Matrix;
+import model.MetodoMinimosCuadrados;
 
 public class IngresarDatosController {
 
+	MetodoMinimosCuadrados metodoMinimosCuadrados;
 	private static IngresarDatosController singleton = new IngresarDatosController();
 	private DefaultTableModel tableModel;
 	private Matrix resultados;
@@ -30,4 +32,16 @@ public class IngresarDatosController {
 		return resultados;
 	}
 	
+	public void generarCalculos() {
+		metodoMinimosCuadrados.generarCalculos(tableModel);
+	}
+	
+	public String resolverSistemaEcuaciones() {
+		return metodoMinimosCuadrados.resolverSistemaEcuaciones(tableModel);
+	}
+
+	public void setMetodoMinimosCuadrados(MetodoMinimosCuadrados metodoMinimosCuadrados) {
+		this.metodoMinimosCuadrados = metodoMinimosCuadrados;
+	}
+
 }

@@ -13,9 +13,6 @@ public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPanel;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
@@ -30,9 +27,6 @@ public class MenuPrincipal extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	public MenuPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TP Superior");
@@ -42,16 +36,16 @@ public class MenuPrincipal extends JFrame {
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 
-		JButton btnNewButton = new JButton("Ingresar Datos");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnIngresarDatos = new JButton("Ingresar Datos");
+		btnIngresarDatos.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				IngresarDatosView ingresarDatosView = new IngresarDatosView();
 				ingresarDatosView.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(10, 11, 230, 23);
-		contentPanel.add(btnNewButton);
+		btnIngresarDatos.setBounds(10, 11, 230, 23);
+		contentPanel.add(btnIngresarDatos);
 
 		JButton btnNewButton_1 = new JButton("Comparar Aproximaciones");
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -64,15 +58,15 @@ public class MenuPrincipal extends JFrame {
 		btnNewButton_1.setBounds(10, 45, 230, 23);
 		contentPanel.add(btnNewButton_1);
 
-		JButton btnNewButton_2 = new JButton("Finalizar");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnFinalizar = new JButton("Finalizar");
+		btnFinalizar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				dispose();
 			}
 		});
-		btnNewButton_2.setBounds(10, 79, 230, 23);
-		contentPanel.add(btnNewButton_2);
+		btnFinalizar.setBounds(10, 79, 230, 23);
+		contentPanel.add(btnFinalizar);
 	}
 
 }
