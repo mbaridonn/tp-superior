@@ -12,6 +12,8 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		return "Recta Minimos Cuadrados";
 	}
 
+	//TODO: Extraer esta a una interfaz
+	//dado una matriz, devuelve un array de sumatorias
 	private Integer[] obtenerSumatorias(DefaultTableModel tableModel) {
 		Integer sumatorias[] = new Integer[tableModel.getColumnCount()];
 		int cantFilas = tableModel.getRowCount();
@@ -20,6 +22,7 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		for(int j = 0; j < cantColumnas; j++) {
 			sumatoria = 0;
 			for(int i = 0; i < cantFilas; i++) {
+				//Calcula la sumatoria de columna
 				sumatoria += Integer.parseInt(tableModel.getValueAt(i, j).toString());
 			}
 			sumatorias[j] = sumatoria;	
@@ -27,6 +30,7 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		return sumatorias;
 	}
 	
+	//Calcula cada Xi*Yi
 	private Integer[] completarCuartaColumna(DefaultTableModel tableModel) {
 		int cantFilas = tableModel.getRowCount();
 		Integer data[] = new Integer[cantFilas];
@@ -36,6 +40,7 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		return data;
 	}
 
+	//Calcula cada Xi^2
 	private Integer[] completarTercerColumna(DefaultTableModel tableModel) {
 		int cantFilas = tableModel.getRowCount();
 		Integer data[] = new Integer[cantFilas];
@@ -45,6 +50,7 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		return data;
 	}
 	
+	//completando la tabla con las nuevas columnas
 	public void generarCalculos(DefaultTableModel tableModel) {
 		Integer dataTercerColumna[] = completarTercerColumna(tableModel);
 		tableModel.addColumn("x^2", dataTercerColumna);
@@ -60,6 +66,7 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		int sum_xCuadrado = (int) tableModel.getValueAt(cantPuntos, 2);
 		int sum_xPorY = (int) tableModel.getValueAt(cantPuntos, 3);
 		
+								// a ...              +     b ...
 		double[][] coeficientes = {{sum_xCuadrado, sum_x}, {sum_x, cantPuntos}};
 		double[] terminosIndep = {sum_xPorY, sum_y};
 		
