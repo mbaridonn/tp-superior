@@ -56,6 +56,10 @@ public class IngresarDatosView extends JDialog {
 				if(this.todosLosCamposEstanLlenos()){
 					model.addRow(new Object[]{"",""});
 				}
+				if(this.masDeUnaFilaEstaVacia()){
+					int indiceFilaVacia = this.getPrimerFilaVacia();
+					model.removeRow(indiceFilaVacia);
+				}
 			}
 			private boolean todosLosCamposEstanLlenos(){
 				for(int i = 0; i < table.getRowCount();i++){
@@ -66,6 +70,32 @@ public class IngresarDatosView extends JDialog {
 					}
 				}
 				return true;
+			}
+			private boolean masDeUnaFilaEstaVacia(){
+				int filasVacias = 0;
+				for(int i = 0; i < table.getRowCount();i++){
+					if(this.estaFilaEstaVacia(i)){
+						filasVacias++;
+					}
+				}
+				return filasVacias > 1;
+			}
+			private boolean estaFilaEstaVacia(int indiceFila){
+				for(int i = 0; i < table.getColumnCount();i++){
+					if(!table.getValueAt(indiceFila, i).equals("")){
+						return false;
+					}
+				}
+				return true;
+			}
+			
+			private int getPrimerFilaVacia(){
+				for(int i = 0; i < table.getRowCount();i++){
+					if(this.estaFilaEstaVacia(i)){
+						return i;
+					}
+				}
+				return 0;
 			}
 		});
 		scrollPane.setViewportView(table);
