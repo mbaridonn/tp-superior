@@ -20,6 +20,12 @@ import model.RectaMinimosCuadrados;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import java.awt.event.InputMethodListener;
+import java.awt.event.InputMethodEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeEvent;
 
 public class IngresarDatosView extends JDialog {
 
@@ -45,6 +51,23 @@ public class IngresarDatosView extends JDialog {
 
 		DefaultTableModel model = new DefaultTableModel(data, columnNames);
 		table = new JTable(model);
+		table.addPropertyChangeListener(new PropertyChangeListener() {
+			public void propertyChange(PropertyChangeEvent arg0) {
+				if(this.todosLosCamposEstanLlenos()){
+					model.addRow(new Object[]{"",""});
+				}
+			}
+			private boolean todosLosCamposEstanLlenos(){
+				for(int i = 0; i < table.getRowCount();i++){
+					for(int j = 0; j < table.getColumnCount();j++){
+						if(table.getValueAt(i, j).equals("")){
+							return false;
+						}
+					}
+				}
+				return true;
+			}
+		});
 		scrollPane.setViewportView(table);
 		
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();

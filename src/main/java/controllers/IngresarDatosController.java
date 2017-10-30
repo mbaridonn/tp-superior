@@ -13,6 +13,7 @@ public class IngresarDatosController {
 	private Matrix resultados;
 	
 	public void setTableModel(DefaultTableModel tableModel) {
+		tableModel.removeRow(tableModel.getRowCount()-1);
 		this.tableModel = tableModel;		
 	}
 	
