@@ -44,4 +44,5 @@ public class IngresarDatosController {
 	public void setMetodoMinimosCuadrados(MetodoMinimosCuadrados metodoMinimosCuadrados) {
 		this.metodoMinimosCuadrados = metodoMinimosCuadrados;
 	}
+	
 }

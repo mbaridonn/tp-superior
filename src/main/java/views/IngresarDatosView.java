@@ -64,9 +64,7 @@ public class IngresarDatosView extends JDialog {
 			private boolean todosLosCamposEstanLlenos(){
 				for(int i = 0; i < table.getRowCount();i++){
 					for(int j = 0; j < table.getColumnCount();j++){
-						if(table.getValueAt(i, j).equals("")){
-							return false;
-						}
+						if(table.getValueAt(i, j).equals("")) return false;
 					}
 				}
 				return true;
@@ -74,26 +72,20 @@ public class IngresarDatosView extends JDialog {
 			private boolean masDeUnaFilaEstaVacia(){
 				int filasVacias = 0;
 				for(int i = 0; i < table.getRowCount();i++){
-					if(this.estaFilaEstaVacia(i)){
-						filasVacias++;
-					}
+					if(this.estaFilaEstaVacia(i)) filasVacias++;
 				}
 				return filasVacias > 1;
 			}
 			private boolean estaFilaEstaVacia(int indiceFila){
 				for(int i = 0; i < table.getColumnCount();i++){
-					if(!table.getValueAt(indiceFila, i).equals("")){
-						return false;
-					}
+					if(!table.getValueAt(indiceFila, i).equals("")) return false;
 				}
 				return true;
 			}
 			
 			private int getPrimerFilaVacia(){
 				for(int i = 0; i < table.getRowCount();i++){
-					if(this.estaFilaEstaVacia(i)){
-						return i;
-					}
+					if(this.estaFilaEstaVacia(i)) return i;
 				}
 				return 0;
 			}
