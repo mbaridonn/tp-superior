@@ -2,10 +2,7 @@ package views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.swing.ComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -20,12 +17,10 @@ import model.RectaMinimosCuadrados;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import java.awt.event.InputMethodListener;
-import java.awt.event.InputMethodEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeEvent;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.JSpinner;
 
 public class IngresarDatosView extends JDialog {
 
@@ -34,7 +29,7 @@ public class IngresarDatosView extends JDialog {
 
 	public IngresarDatosView() {
 		setTitle("Ingresar Datos");
-		setBounds(100, 100, 266, 300);
+		setBounds(100, 100, 266, 334);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -94,13 +89,22 @@ public class IngresarDatosView extends JDialog {
 		
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
 		
+		JLabel lblDecimalesAUtilizar = new JLabel("Decimales a utilizar:");
+		lblDecimalesAUtilizar.setBounds(10, 180, 117, 14);
+		contentPanel.add(lblDecimalesAUtilizar);
+		
+		SpinnerNumberModel numberModel = new SpinnerNumberModel(2, 0, 9, 1);
+		JSpinner spinner = new JSpinner(numberModel);
+		spinner.setBounds(139, 177, 29, 20);
+		contentPanel.add(spinner);
+		
 		JLabel lblSeleccioneMetodoDe = new JLabel("Seleccione un metodo de aproximacion");
-		lblSeleccioneMetodoDe.setBounds(10, 171, 230, 14);
+		lblSeleccioneMetodoDe.setBounds(10, 205, 230, 14);
 		contentPanel.add(lblSeleccioneMetodoDe);
 		
 		JComboBox<MetodoMinimosCuadrados> comboBox = new JComboBox<MetodoMinimosCuadrados>();
 		comboBox.addItem(new RectaMinimosCuadrados());
-		comboBox.setBounds(10, 196, 230, 20);
+		comboBox.setBounds(10, 230, 230, 20);
 		contentPanel.add(comboBox);
 		
 		JButton btnAproximarMediante = new JButton("Aproximar mediante");
@@ -108,6 +112,7 @@ public class IngresarDatosView extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				ingresarDatosController.setTableModel(model);
+				ingresarDatosController.setCantidadDecimales((int) numberModel.getValue());
 				ingresarDatosController.setMetodoMinimosCuadrados((MetodoMinimosCuadrados) comboBox.getSelectedItem());
 				ingresarDatosController.generarCalculos();
 				MenuResultadosView menuResultadosView = new MenuResultadosView();
@@ -115,8 +120,7 @@ public class IngresarDatosView extends JDialog {
 				setVisible(false);
 			}
 		});
-		btnAproximarMediante.setBounds(10, 227, 230, 23);
+		btnAproximarMediante.setBounds(10, 261, 230, 23);
 		contentPanel.add(btnAproximarMediante);
-		
 	}
 }

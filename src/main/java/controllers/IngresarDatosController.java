@@ -7,10 +7,11 @@ import model.MetodoMinimosCuadrados;
 
 public class IngresarDatosController {
 
-	MetodoMinimosCuadrados metodoMinimosCuadrados;
+	private MetodoMinimosCuadrados metodoMinimosCuadrados;
 	private static IngresarDatosController singleton = new IngresarDatosController();
 	private DefaultTableModel tableModel;
 	private Matrix resultados;
+	private int cantidadDecimales;
 	
 	public void setTableModel(DefaultTableModel tableModel) {
 		tableModel.removeRow(tableModel.getRowCount()-1);
@@ -43,6 +44,14 @@ public class IngresarDatosController {
 
 	public void setMetodoMinimosCuadrados(MetodoMinimosCuadrados metodoMinimosCuadrados) {
 		this.metodoMinimosCuadrados = metodoMinimosCuadrados;
+	}
+
+	public void setCantidadDecimales(int value) {
+		cantidadDecimales = value;		
+	}
+	
+	public int getCantidadDecimales() {
+		return cantidadDecimales;
 	}
 	
 }

@@ -70,14 +70,18 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		double[][] coeficientes = {{sum_xCuadrado, sum_x}, {sum_x, cantPuntos}};
 		double[] terminosIndep = {sum_xPorY, sum_y};
 		
-		Matrix lhs = new Matrix(coeficientes);
-	    Matrix rhs = new Matrix(terminosIndep, 2);
+		Matrix matrizCoeficientes = new Matrix(coeficientes);
+	    Matrix matrizTerminosIndep = new Matrix(terminosIndep, 2);
 	    
-	    Matrix ans = lhs.solve(rhs);
+	    Matrix matrizResultados = matrizCoeficientes.solve(matrizTerminosIndep);
 	    IngresarDatosController ingresarDatosContoller = IngresarDatosController.getInstance();
-	    ingresarDatosContoller.setMatrizResultados(ans);
+	    ingresarDatosContoller.setMatrizResultados(matrizResultados);
 	    
-        String resultado = Math.round(ans.get(0, 0)) + "*x + " + Math.round(ans.get(1, 0));
+	    int cantDecimales = ingresarDatosContoller.getCantidadDecimales();
+	    
+        String resultado =  String.format("%."+cantDecimales+"f", matrizResultados.get(0, 0)) 
+        					+ "*x + " 
+        					+ String.format("%."+cantDecimales+"f", matrizResultados.get(1, 0));
         
 		return resultado;		
 	}
