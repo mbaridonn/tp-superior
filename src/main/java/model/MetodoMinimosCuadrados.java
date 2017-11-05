@@ -50,5 +50,7 @@ public interface MetodoMinimosCuadrados {
 		}
 		return resultados;
 	}
+	
+	public double obtenerImagen(double entrada);
 
 }

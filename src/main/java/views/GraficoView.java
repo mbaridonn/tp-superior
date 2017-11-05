@@ -12,8 +12,6 @@ public class GraficoView extends JFrame{
 	
 	private final static int numero = 1200;
 	private static IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
-	private static double a = ingresarDatosController.getMatrizResultados().get(0,0);
-	private static double b = ingresarDatosController.getMatrizResultados().get(1,0);
 	
 	public static double[] generarEntradas(){
 		double init = 0.0;
@@ -29,7 +27,7 @@ public class GraficoView extends JFrame{
 	public static double[] generarSalidas(double[] entradas) {
 		double[] salidas = new double[numero];
 		for(int i = 0; i < numero; i++) {
-			salidas[i] = a * entradas[i] + b;
+			salidas[i] = ingresarDatosController.obtenerImagen(entradas[i]);
 		}
 		return salidas;
 	}

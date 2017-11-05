@@ -54,16 +54,40 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 	    
 	    int cantDecimales = ingresarDatosContoller.getCantidadDecimales();
 	    
-        String resultado =  String.format("%."+cantDecimales+"f", matrizResultados.get(0, 0)) 
+	    double a = matrizResultados.get(0, 0);
+	    double b = matrizResultados.get(1, 0);
+	    
+        String resultado =  String.format("%."+cantDecimales+"f", a) 
         					+ "*x + " 
-        					+ String.format("%."+cantDecimales+"f", matrizResultados.get(1, 0));
+        					+ String.format("%."+cantDecimales+"f", b);
         
 		return resultado;		
 	}
 
 	@Override
 	public String[] sistemasDeEcuaciones(DefaultTableModel tableModel) {
-		String[] sistemasDeEcuaciones = new String[1];
+		String[] sistemasDeEcuaciones = new String[2];
+		int cantPuntos = tableModel.getRowCount() - 1;
+		Double sum_x = (Double) tableModel.getValueAt(cantPuntos, 0);
+		Double sum_y = (Double) tableModel.getValueAt(cantPuntos, 1);
+		Double sum_xCuadrado = (Double) tableModel.getValueAt(cantPuntos, 2);
+		Double sum_xPorY = (Double) tableModel.getValueAt(cantPuntos, 3);
+		
+		String primeraEcuacion = sum_xCuadrado + " a " + "+ " + sum_x + " b " + "= " + sum_xPorY;
+		String segundaEcuacion = sum_x + " a " + "+ " + cantPuntos + " b " + "= " + sum_y;
+		
+		sistemasDeEcuaciones[0] = primeraEcuacion;
+		sistemasDeEcuaciones[1] = segundaEcuacion;
+		
 		return sistemasDeEcuaciones;
+	}
+
+	@Override
+	public double obtenerImagen(double entrada) {
+		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
+		Matrix matrizResultados = ingresarDatosController.getMatrizResultados();
+		double a = matrizResultados.get(0, 0);
+		double b = matrizResultados.get(1, 0);
+		return a * entrada + b;
 	}
 }
