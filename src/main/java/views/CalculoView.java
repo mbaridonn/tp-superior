@@ -16,14 +16,14 @@ public class CalculoView extends JDialog {
 	
 	public CalculoView(){
 		setTitle("Menu Resultados");
-		setBounds(100, 100, 266, 300);
+		setBounds(100, 100, 456, 375);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 36, 230, 144);
+		scrollPane.setBounds(10, 36, 420, 144);
 		contentPanel.add(scrollPane);
 
 		DefaultTableModel tableModel = ingresarDatosController.getTableModel();
@@ -39,19 +39,15 @@ public class CalculoView extends JDialog {
 		lblSistemaDeEcuaciones.setBounds(10, 191, 230, 14);
 		contentPanel.add(lblSistemaDeEcuaciones);
 		
-		int cantPuntos = tableModel.getRowCount() - 1;
-		int sum_x = (int) tableModel.getValueAt(cantPuntos, 0);
-		int sum_y = (int) tableModel.getValueAt(cantPuntos, 1);
-		int sum_xCuadrado = (int) tableModel.getValueAt(cantPuntos, 2);
-		int sum_xPorY = (int) tableModel.getValueAt(cantPuntos, 3);
-		
-		JLabel lblSistemaEcuaciones1 = new JLabel("a*"+sum_xCuadrado+" + b*"+sum_x+" = "+sum_xPorY);
-		lblSistemaEcuaciones1.setBounds(10, 216, 230, 14);
-		contentPanel.add(lblSistemaEcuaciones1);
-		
-		JLabel lblSistemaEcuaciones2 = new JLabel("a*"+sum_x+" + b*"+cantPuntos+" = "+sum_y);
-		lblSistemaEcuaciones2.setBounds(10, 241, 230, 14);
-		contentPanel.add(lblSistemaEcuaciones2);
+
+		String[] sistemasDeEcuaciones = ingresarDatosController.getSistemasDeEcuaciones();
+		int posYUltimaEcuacion = 216;
+		for(int i = 0; i < sistemasDeEcuaciones.length; i++) {
+			JLabel lblSistemaEcuaciones1 = new JLabel(sistemasDeEcuaciones[i]);
+			lblSistemaEcuaciones1.setBounds(10, posYUltimaEcuacion, 420, 10);
+			posYUltimaEcuacion += 30;
+			contentPanel.add(lblSistemaEcuaciones1);
+		}
 	}
 	
 	

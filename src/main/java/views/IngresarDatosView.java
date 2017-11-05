@@ -12,7 +12,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.IngresarDatosController;
+import model.ExponencialMinimosCuadrados;
+import model.HiperbolaMinimosCuadrados;
 import model.MetodoMinimosCuadrados;
+import model.ParabolaMinimosCuadrados;
+import model.PotencialMinimosCuadrados;
 import model.RectaMinimosCuadrados;
 
 import javax.swing.JComboBox;
@@ -104,6 +108,10 @@ public class IngresarDatosView extends JDialog {
 		
 		JComboBox<MetodoMinimosCuadrados> comboBox = new JComboBox<MetodoMinimosCuadrados>();
 		comboBox.addItem(new RectaMinimosCuadrados());
+		comboBox.addItem(new ParabolaMinimosCuadrados());
+		comboBox.addItem(new ExponencialMinimosCuadrados());
+		comboBox.addItem(new PotencialMinimosCuadrados());
+		comboBox.addItem(new HiperbolaMinimosCuadrados());
 		comboBox.setBounds(10, 230, 230, 20);
 		contentPanel.add(comboBox);
 		

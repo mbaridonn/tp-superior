@@ -54,5 +54,16 @@ public class IngresarDatosController {
 	public int getCantidadDecimales() {
 		return cantidadDecimales;
 	}
+
+	public String[] getSistemasDeEcuaciones() {
+//		String[] sistemasDeEcuaciones = metodoMinimosCuadrados.sistemasDeEcuaciones(tableModel);
+//		int cantidadDeEcuaciones = sistemasDeEcuaciones.length;
+//		String ecuacionesText = "";
+//		for(int i = 0 ; i < cantidadDeEcuaciones;i++) {
+//			ecuacionesText += sistemasDeEcuaciones[i];
+//			if(i != cantidadDeEcuaciones -1) ecuacionesText += "\n\n"; // Best practices ever
+//		}
+		return metodoMinimosCuadrados.sistemasDeEcuaciones(tableModel);
+	}
 	
 }

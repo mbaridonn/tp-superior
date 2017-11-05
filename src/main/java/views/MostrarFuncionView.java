@@ -27,7 +27,7 @@ public class MostrarFuncionView extends JDialog{
 		
 		JLabel label = new JLabel("");
 		label.setText(resultado);
-		label.setBounds(90, 36, 113, 14);
+		label.setBounds(10, 36, 230, 14);
 		contentPanel.add(label);
 	}
 	
