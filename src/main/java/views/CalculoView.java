@@ -52,8 +52,6 @@ public class CalculoView extends JDialog {
 		JLabel lblSistemaEcuaciones2 = new JLabel("a*"+sum_x+" + b*"+cantPuntos+" = "+sum_y);
 		lblSistemaEcuaciones2.setBounds(10, 241, 230, 14);
 		contentPanel.add(lblSistemaEcuaciones2);
-		
-		ingresarDatosController.setTableModel(tableModel);
 	}
 	
 	

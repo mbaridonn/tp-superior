@@ -36,6 +36,7 @@ public class IngresarDatosController {
 	
 	public void generarCalculos() {
 		metodoMinimosCuadrados.generarCalculos(tableModel);
+		resolverSistemaEcuaciones();
 	}
 	
 	public String resolverSistemaEcuaciones() {
