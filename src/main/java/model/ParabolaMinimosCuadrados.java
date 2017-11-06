@@ -49,11 +49,11 @@ public class ParabolaMinimosCuadrados implements MetodoMinimosCuadrados{
 	    double b = matrizResultados.get(1, 0);
 	    double a = matrizResultados.get(2, 0);
 	    
-        String resultado =  String.format("%."+cantDecimales+"f", c) 
+        String resultado =  String.format("%."+cantDecimales+"f", a) 
         					+ "(x^2) + " 
         					+ String.format("%."+cantDecimales+"f", b)
         					+ " x + "
-        					+ String.format("%."+cantDecimales+"f", a);
+        					+ String.format("%."+cantDecimales+"f", c);
         
 		return resultado;
 	}
