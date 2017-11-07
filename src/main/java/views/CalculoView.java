@@ -15,15 +15,15 @@ public class CalculoView extends JDialog {
 	IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
 	
 	public CalculoView(){
-		setTitle("Menu Resultados");
-		setBounds(100, 100, 456, 375);
+		setTitle("Obtener Calculos");
+		setBounds(800, 200, 650, 660);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 36, 420, 144);
+		scrollPane.setBounds(10, 36, 600, 150);
 		contentPanel.add(scrollPane);
 
 		DefaultTableModel tableModel = ingresarDatosController.getTableModel();
@@ -32,11 +32,11 @@ public class CalculoView extends JDialog {
 		scrollPane.setViewportView(table);
 		
 		JLabel lblTablaDeSumatorias = new JLabel("Tabla de sumatorias:");
-		lblTablaDeSumatorias.setBounds(10, 11, 230, 14);
+		lblTablaDeSumatorias.setBounds(200, 800, 230, 14);
 		contentPanel.add(lblTablaDeSumatorias);
 		
 		JLabel lblSistemaDeEcuaciones = new JLabel("Sistema de ecuaciones:");
-		lblSistemaDeEcuaciones.setBounds(10, 191, 230, 14);
+		lblSistemaDeEcuaciones.setBounds(200, 800, 230, 14);
 		contentPanel.add(lblSistemaDeEcuaciones);
 		
 

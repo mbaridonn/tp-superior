@@ -12,7 +12,7 @@ public class MenuResultadosView extends JDialog{
 
 	public MenuResultadosView() {
 		setTitle("Menu Resultados");
-		setBounds(100, 100, 266, 300);
+		setBounds(500, 350, 650, 300);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -26,7 +26,7 @@ public class MenuResultadosView extends JDialog{
 				mostrarFuncionView.setVisible(true);
 			}
 		});
-		btnMostrarFuncion.setBounds(12, 13, 224, 25);
+		btnMostrarFuncion.setBounds(10, 10, 600, 50);
 		contentPanel.add(btnMostrarFuncion);
 		
 		JButton btnObtenerCalculo = new JButton("Obtener calculo");
@@ -37,7 +37,7 @@ public class MenuResultadosView extends JDialog{
 				calculoView.setVisible(true);
 			}
 		});
-		btnObtenerCalculo.setBounds(12, 51, 224, 25);
+		btnObtenerCalculo.setBounds(10, 80, 600, 50);
 		contentPanel.add(btnObtenerCalculo);
 		
 		JButton btnGraficar = new JButton("Graficar");
@@ -47,7 +47,7 @@ public class MenuResultadosView extends JDialog{
 				graficoView.setVisible(true);
 			}
 		});
-		btnGraficar.setBounds(12, 89, 224, 25);
+		btnGraficar.setBounds(10, 150, 600, 50);
 		contentPanel.add(btnGraficar);
 		
 	}

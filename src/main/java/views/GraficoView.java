@@ -34,7 +34,7 @@ public class GraficoView extends JFrame{
 	
 	public GraficoView() {
 		setTitle("Grafico");
-		setBounds(100, 100, 266, 300);
+		setBounds(700, 200, 650, 660);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 

@@ -11,7 +11,7 @@ public class CompararAproxView extends JDialog {
 
 	public CompararAproxView() {
 		setTitle("Comparar Aproximaciones");
-		setBounds(100, 100, 266, 179);
+		setBounds(500, 350, 650, 300);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);

@@ -33,14 +33,14 @@ public class IngresarDatosView extends JDialog {
 
 	public IngresarDatosView() {
 		setTitle("Ingresar Datos");
-		setBounds(100, 100, 266, 334);
+		setBounds(700, 200, 650, 660);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 21, 230, 144);
+		scrollPane.setBounds(10, 21, 600, 300);
 		contentPanel.add(scrollPane);
 
 		String[] columnNames = { "x", "f(x)"};
@@ -94,16 +94,16 @@ public class IngresarDatosView extends JDialog {
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
 		
 		JLabel lblDecimalesAUtilizar = new JLabel("Decimales a utilizar:");
-		lblDecimalesAUtilizar.setBounds(10, 180, 117, 14);
+		lblDecimalesAUtilizar.setBounds(10, 350, 300, 50);
 		contentPanel.add(lblDecimalesAUtilizar);
 		
 		SpinnerNumberModel numberModel = new SpinnerNumberModel(2, 0, 9, 1);
 		JSpinner spinner = new JSpinner(numberModel);
-		spinner.setBounds(139, 177, 29, 20);
+		spinner.setBounds(139, 365, 50, 30);
 		contentPanel.add(spinner);
 		
 		JLabel lblSeleccioneMetodoDe = new JLabel("Seleccione un metodo de aproximacion");
-		lblSeleccioneMetodoDe.setBounds(10, 205, 230, 14);
+		lblSeleccioneMetodoDe.setBounds(10, 420, 230, 14);
 		contentPanel.add(lblSeleccioneMetodoDe);
 		
 		JComboBox<MetodoMinimosCuadrados> comboBox = new JComboBox<MetodoMinimosCuadrados>();
@@ -112,7 +112,7 @@ public class IngresarDatosView extends JDialog {
 		comboBox.addItem(new ExponencialMinimosCuadrados());
 		comboBox.addItem(new PotencialMinimosCuadrados());
 		comboBox.addItem(new HiperbolaMinimosCuadrados());
-		comboBox.setBounds(10, 230, 230, 20);
+		comboBox.setBounds(10, 440, 600, 30);
 		contentPanel.add(comboBox);
 		
 		JButton btnAproximarMediante = new JButton("Aproximar mediante");
@@ -128,7 +128,7 @@ public class IngresarDatosView extends JDialog {
 				setVisible(false);
 			}
 		});
-		btnAproximarMediante.setBounds(10, 261, 230, 23);
+		btnAproximarMediante.setBounds(100, 500, 400, 40);
 		contentPanel.add(btnAproximarMediante);
 	}
 }

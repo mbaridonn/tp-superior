@@ -30,7 +30,7 @@ public class MenuPrincipal extends JFrame {
 	public MenuPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TP Superior");
-		setBounds(100, 100, 266, 179);
+		setBounds(500, 300, 650, 300);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -44,7 +44,7 @@ public class MenuPrincipal extends JFrame {
 				ingresarDatosView.setVisible(true);
 			}
 		});
-		btnIngresarDatos.setBounds(10, 11, 230, 23);
+		btnIngresarDatos.setBounds(10, 10, 600, 50);
 		contentPanel.add(btnIngresarDatos);
 
 		JButton btnNewButton_1 = new JButton("Comparar Aproximaciones");
@@ -55,7 +55,7 @@ public class MenuPrincipal extends JFrame {
 				compararAproxView.setVisible(true);
 			}
 		});
-		btnNewButton_1.setBounds(10, 45, 230, 23);
+		btnNewButton_1.setBounds(10, 80, 600, 50);
 		contentPanel.add(btnNewButton_1);
 
 		JButton btnFinalizar = new JButton("Finalizar");
@@ -65,7 +65,7 @@ public class MenuPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnFinalizar.setBounds(10, 79, 230, 23);
+		btnFinalizar.setBounds(10, 150, 600, 50);
 		contentPanel.add(btnFinalizar);
 	}
 
