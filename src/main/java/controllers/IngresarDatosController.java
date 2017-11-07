@@ -65,5 +65,9 @@ public class IngresarDatosController {
 //		}
 		return metodoMinimosCuadrados.sistemasDeEcuaciones(tableModel);
 	}
+
+	public double obtenerImagen(double entrada) {
+		return metodoMinimosCuadrados.obtenerImagen(entrada);
+	}
 	
 }

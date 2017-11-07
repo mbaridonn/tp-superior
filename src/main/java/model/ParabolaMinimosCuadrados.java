@@ -45,11 +45,15 @@ public class ParabolaMinimosCuadrados implements MetodoMinimosCuadrados{
 	    
 	    int cantDecimales = ingresarDatosContoller.getCantidadDecimales();
 	    
-        String resultado =  String.format("%."+cantDecimales+"f", matrizResultados.get(0, 0)) 
+	    double c = matrizResultados.get(0, 0);
+	    double b = matrizResultados.get(1, 0);
+	    double a = matrizResultados.get(2, 0);
+	    
+        String resultado =  String.format("%."+cantDecimales+"f", a) 
         					+ "(x^2) + " 
-        					+ String.format("%."+cantDecimales+"f", matrizResultados.get(1, 0))
+        					+ String.format("%."+cantDecimales+"f", b)
         					+ " x + "
-        					+ String.format("%."+cantDecimales+"f", matrizResultados.get(2, 0));
+        					+ String.format("%."+cantDecimales+"f", c);
         
 		return resultado;
 	}
@@ -88,5 +92,15 @@ public class ParabolaMinimosCuadrados implements MetodoMinimosCuadrados{
 		sistemasDeEcuaciones[2] = terceraEcuacion;
 		
 		return sistemasDeEcuaciones;
+	}
+
+	@Override
+	public double obtenerImagen(double entrada) {
+		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
+		Matrix matrizResultados = ingresarDatosController.getMatrizResultados();
+		double c = matrizResultados.get(0, 0);
+	    double b = matrizResultados.get(1, 0);
+	    double a = matrizResultados.get(2, 0);
+		return c*Math.pow(entrada, 2) + b*entrada + a;
 	}
 }

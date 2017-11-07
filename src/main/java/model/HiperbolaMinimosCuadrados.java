@@ -110,4 +110,10 @@ public class HiperbolaMinimosCuadrados implements MetodoMinimosCuadrados{
 		return sistemasDeEcuaciones;
 	}
 
+	@Override
+	public double obtenerImagen(double entrada) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }
