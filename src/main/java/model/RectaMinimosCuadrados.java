@@ -11,9 +11,6 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 	public String toString() {
 		return "Recta Minimos Cuadrados";
 	}
-
-	//TODO: Extraer esta a una interfaz
-	//dado una matriz, devuelve un array de sumatorias
 	
 	//Calcula cada Xi*Yi
 	private Double[] completarCuartaColumna(DefaultTableModel tableModel) {

@@ -7,6 +7,7 @@ public interface MetodoMinimosCuadrados {
 	public void generarCalculos(DefaultTableModel tableModel);
 	public String resolverSistemaEcuaciones(DefaultTableModel tableModel);
 	public String[] sistemasDeEcuaciones(DefaultTableModel tableModel);
+	
 	default Double[] obtenerSumatorias(DefaultTableModel tableModel) {
 		Double sumatorias[] = new Double[tableModel.getColumnCount()];
 		int cantFilas = tableModel.getRowCount();
