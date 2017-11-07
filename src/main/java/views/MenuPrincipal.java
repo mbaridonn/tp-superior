@@ -47,17 +47,6 @@ public class MenuPrincipal extends JFrame {
 		btnIngresarDatos.setBounds(10, 11, 230, 23);
 		contentPanel.add(btnIngresarDatos);
 
-		JButton btnNewButton_1 = new JButton("Comparar Aproximaciones");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				CompararAproxView compararAproxView = new CompararAproxView();
-				compararAproxView.setVisible(true);
-			}
-		});
-		btnNewButton_1.setBounds(10, 45, 230, 23);
-		contentPanel.add(btnNewButton_1);
-
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
 			@Override
@@ -65,7 +54,7 @@ public class MenuPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnFinalizar.setBounds(10, 79, 230, 23);
+		btnFinalizar.setBounds(10, 45, 230, 23);
 		contentPanel.add(btnFinalizar);
 	}
 

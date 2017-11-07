@@ -23,6 +23,7 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 	}
 	
 	//completando la tabla con las nuevas columnas
+	@Override
 	public void generarCalculos(DefaultTableModel tableModel) {
 		Double dataTercerColumna[] = completarTercerColumna(tableModel);
 		tableModel.addColumn("x^2", dataTercerColumna);
@@ -31,8 +32,10 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 		tableModel.addRow(obtenerSumatorias(tableModel));
 	}
 	
+	@Override
 	public String resolverSistemaEcuaciones(DefaultTableModel tableModel) {
 		int cantPuntos = tableModel.getRowCount() - 1;
+		System.out.println(cantPuntos);
 		Double sum_x = (Double) tableModel.getValueAt(cantPuntos, 0);
 		Double sum_y = (Double) tableModel.getValueAt(cantPuntos, 1);
 		Double sum_xCuadrado = (Double) tableModel.getValueAt(cantPuntos, 2);
