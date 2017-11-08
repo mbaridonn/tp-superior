@@ -35,6 +35,31 @@ public interface MetodoMinimosCuadrados {
 		return resultados;
 	};
 	
+	default Double[] logaritmoNaturalXi(DefaultTableModel tableModel) {
+		int cantFilas = tableModel.getRowCount();
+		int indiceColumnaX = 0;
+		Double resultados[] = new Double[cantFilas];
+		for(int i = 0; i < cantFilas; i++ ) {
+			double valorDeX = valorEnCelda(i,indiceColumnaX,tableModel);
+			resultados[i] = (Double) Math.log(valorDeX);
+		}
+		return resultados;
+	};
+	
+	
+	default Double[] logaritmoNaturalYi(DefaultTableModel tableModel) {
+		int cantFilas = tableModel.getRowCount();
+		int indiceColumnaY = 1;
+		Double resultados[] = new Double[cantFilas];
+		for(int i = 0; i < cantFilas; i++ ) {
+			double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
+			resultados[i] = (Double) Math.log(valorDeY);
+		}
+		return resultados;
+	};	
+	
+	
+	
 	default double valorEnCelda(int fila, int columna,DefaultTableModel tableModel) {		
 		return Double.parseDouble(tableModel.getValueAt(fila, columna).toString());
 	};
