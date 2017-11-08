@@ -35,7 +35,6 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
 	@Override
 	public String resolverSistemaEcuaciones(DefaultTableModel tableModel) {
 		int cantPuntos = tableModel.getRowCount() - 1;
-		System.out.println(cantPuntos);
 		Double sum_x = (Double) tableModel.getValueAt(cantPuntos, 0);
 		Double sum_y = (Double) tableModel.getValueAt(cantPuntos, 1);
 		Double sum_xCuadrado = (Double) tableModel.getValueAt(cantPuntos, 2);
@@ -61,7 +60,7 @@ public class RectaMinimosCuadrados implements MetodoMinimosCuadrados {
         					+ "*x + " 
         					+ String.format("%."+cantDecimales+"f", b);
         
-		return resultado;		
+		return resultado;
 	}
 
 	@Override
