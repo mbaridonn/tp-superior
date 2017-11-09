@@ -45,6 +45,7 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 		btnIngresarDatos.setBounds(10, 10, 600, 50);
+		btnIngresarDatos.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnIngresarDatos);
 
 		JButton btnNewButton_1 = new JButton("Comparar Aproximaciones");
@@ -56,6 +57,7 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 		btnNewButton_1.setBounds(10, 80, 600, 50);
+		btnNewButton_1.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnNewButton_1);
 
 		JButton btnFinalizar = new JButton("Finalizar");
@@ -66,6 +68,7 @@ public class MenuPrincipal extends JFrame {
 			}
 		});
 		btnFinalizar.setBounds(10, 150, 600, 50);
+		btnFinalizar.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnFinalizar);
 	}
 
