@@ -84,9 +84,13 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 	    
 	    int cantDecimales = ingresarDatosContoller.getCantidadDecimales();
 	    
-        String resultado =  String.format("%."+cantDecimales+"f", matrizResultados.get(0, 0)) 
+	    double a = matrizResultados.get(0, 0);
+		double b = matrizResultados.get(1, 0);
+		double B = (Double) Math.pow(Math.E,b);
+	    
+        String resultado =  String.format("%."+cantDecimales+"f", a) 
         					+ "e^ ( " 
-        					+ String.format("%."+cantDecimales+"f", matrizResultados.get(1, 0))
+        					+ String.format("%."+cantDecimales+"f",B)
         					+"x)";
         
 		return resultado;		
@@ -110,13 +114,15 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		return sistemasDeEcuaciones;
 	}
 
+	//a = A ; ln(b) = B
 	@Override
 	public double obtenerImagen(double entrada) {
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
 		Matrix matrizResultados = ingresarDatosController.getMatrizResultados();
 		double a = matrizResultados.get(0, 0);
 		double b = matrizResultados.get(1, 0);
-		return a * entrada + b;
+		double B = (Double) Math.log(b);
+		return a * entrada + B;
 	}
 
 }
