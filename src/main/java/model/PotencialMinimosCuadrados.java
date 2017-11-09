@@ -17,42 +17,46 @@ public class PotencialMinimosCuadrados implements MetodoMinimosCuadrados {
 	
 	//columna 2. Xi = ln(xi)
 	private Double[] completarSegundaColumna(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 		int cantFilas = tableModel.getRowCount();
 		int indiceColumnaX = 0;
 		Double resultados[] = new Double[cantFilas];
 		for(int i = 0; i < cantFilas; i++ ) {
 			double valorDeX = valorEnCelda(i,indiceColumnaX,tableModel);
-			resultados[i] = (Double) Math.log(valorDeX);
+			resultados[i] = round((Double) Math.log(valorDeX), cantDecimales);
 		}
 		return resultados;
 	}
 	
 	//columna 3. Yi = ln(yi)
 	private Double[] logaritmoNaturalYi(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 		int cantFilas = tableModel.getRowCount();
 		int indiceColumnaY = 1;
 		Double resultados[] = new Double[cantFilas];
 		for(int i = 0; i < cantFilas; i++ ) {
 			double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
-			resultados[i] = (Double) Math.log(valorDeY);
+			resultados[i] = round((Double) Math.log(valorDeY), cantDecimales);
 		}
 		return resultados;
 	};	
 	
 	//columna 4. Xi^2
 	private Double[] XAlCuadrado(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 		int cantFilas = tableModel.getRowCount();
 		int indiceColumnaX = 2; // 2. Xi = ln(xi)
 		Double resultados[] = new Double[cantFilas];
 		for(int i = 0; i < cantFilas; i++ ) {
 			double valorDeX = valorEnCelda(i,indiceColumnaX,tableModel);
-			resultados[i] = (Double) Math.pow(valorDeX, 2);
+			resultados[i] = round((Double) Math.pow(valorDeX, 2),cantDecimales);
 		}
 		return resultados;
 	};
 	
 	//columna 5. Xi*Yi
 	private Double[] resultadosYPorx(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 		int cantFilas = tableModel.getRowCount();
 		int indiceColumnaX = 2; // 0. xi 1. yi 2. X = ln(xi) 3. Y = ln(yi) 4.Xi^2 5.Xi*Yi
 		int indiceColumnaY = 3;
@@ -60,7 +64,7 @@ public class PotencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		for(int i = 0; i < cantFilas; i++ ) {
 			double valorDeX = valorEnCelda(i,indiceColumnaX,tableModel);
 			double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
-			resultados[i] = valorDeX * valorDeY;
+			resultados[i] = round(valorDeX * valorDeY, cantDecimales);
 		}
 		return resultados;
 	}

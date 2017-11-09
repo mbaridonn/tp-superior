@@ -19,13 +19,14 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 	
 	//columna 2. Yi = ln(yi)
 	private Double[] CompletarSegundaColumna(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 		int cantFilas = tableModel.getRowCount();
 		 //0 xi, 1 yi, 2 Yi, 3 xi^2, 4 Yi * xi 
 		int indiceColumnaY = 1;
 		Double resultados[] = new Double[cantFilas];
 		for(int i = 0; i < cantFilas; i++ ) {
 			double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
-			resultados[i] = (Double) Math.log(valorDeY);
+			resultados[i] = round((Double) Math.log(valorDeY), cantDecimales);	
 		}
 		return resultados;
 	}
@@ -37,6 +38,7 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 	
 	//columna 4. xi * Yi = xi * ln(yi)
 	private Double[] resultadosYPorx(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 		int cantFilas = tableModel.getRowCount();
 		int indiceColumnaX = 0; //0 xi, 1 yi, 2 Yi, 3 xi^2, 4 Yi * xi 
 		int indiceColumnaY = 2;
@@ -44,7 +46,8 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		for(int i = 0; i < cantFilas; i++ ) {
 			double valorDeX = valorEnCelda(i,indiceColumnaX,tableModel);
 			double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
-			resultados[i] = valorDeX * valorDeY;
+			resultados[i] = round(valorDeX * valorDeY, cantDecimales);
+			System.out.println("ES ESTA " + resultados[i]);
 		}
 		return resultados;
 	}

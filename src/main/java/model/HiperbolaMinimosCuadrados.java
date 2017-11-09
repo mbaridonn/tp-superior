@@ -20,11 +20,12 @@ public class HiperbolaMinimosCuadrados implements MetodoMinimosCuadrados{
 		}
 		
 	private Double[] resultadosUnoSobreY(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 			int cantFilas = tableModel.getRowCount();
 			int indiceColumnaY = 1;
 			Double resultados[] = new Double[cantFilas];
 			for(int i = 0; i < cantFilas; i++ ) {
-				double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
+				double valorDeY = round(valorEnCelda(i,indiceColumnaY,tableModel), cantDecimales);
 				resultados[i] = 1 / valorDeY;
 			}
 			return resultados;
