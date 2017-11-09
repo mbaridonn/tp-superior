@@ -104,9 +104,13 @@ public class PotencialMinimosCuadrados implements MetodoMinimosCuadrados {
 	    
 	    int cantDecimales = ingresarDatosContoller.getCantidadDecimales();
 	    
-        String resultado =  String.format("%."+cantDecimales+"f", matrizResultados.get(0, 0)) 
+	    double a = matrizResultados.get(0, 0);
+		double b = matrizResultados.get(1, 0);
+		double B = (Double) Math.pow(Math.E,b);
+	    
+        String resultado =  String.format("%."+cantDecimales+"f", a) 
         					+ "*x + " 
-        					+ String.format("%."+cantDecimales+"f", matrizResultados.get(1, 0));
+        					+ String.format("%."+cantDecimales+"f", B);
         
 		return resultado;
 	}
@@ -137,7 +141,8 @@ public class PotencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		Matrix matrizResultados = ingresarDatosController.getMatrizResultados();
 		double a = matrizResultados.get(0, 0);
 		double b = matrizResultados.get(1, 0);
-		return a * entrada + b;
+		double B = (Double) Math.pow(Math.E,b);
+		return a * entrada + B;
 	}
 
 }
