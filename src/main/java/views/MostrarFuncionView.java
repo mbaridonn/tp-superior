@@ -20,14 +20,16 @@ public class MostrarFuncionView extends JDialog{
 		contentPanel.setLayout(null);
 		
 		JLabel lblLaFuncionObtenida = new JLabel("La funcion obtenida es:");
-		lblLaFuncionObtenida.setBounds(100, 50, 134, 14);
+		lblLaFuncionObtenida.setBounds(100, 50, 400, 50);
+		lblLaFuncionObtenida.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(lblLaFuncionObtenida);
 
 		String resultado = ingresarDatosController.resolverSistemaEcuaciones();
 		
 		JLabel label = new JLabel("");
 		label.setText(resultado);
-		label.setBounds(200, 90, 230, 14);
+		label.setBounds(250, 90, 230, 50);
+		label.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(label);
 	}
 	

@@ -96,15 +96,18 @@ public class IngresarDatosView extends JDialog {
 		
 		JLabel lblDecimalesAUtilizar = new JLabel("Decimales a utilizar:");
 		lblDecimalesAUtilizar.setBounds(10, 350, 300, 50);
+		lblDecimalesAUtilizar.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(lblDecimalesAUtilizar);
 		
 		SpinnerNumberModel numberModel = new SpinnerNumberModel(2, 0, 9, 1);
 		JSpinner spinner = new JSpinner(numberModel);
-		spinner.setBounds(139, 365, 50, 30);
+		spinner.setBounds(200, 360, 50, 30);
+		spinner.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(spinner);
 		
-		JLabel lblSeleccioneMetodoDe = new JLabel("Seleccione un metodo de aproximacion");
-		lblSeleccioneMetodoDe.setBounds(10, 420, 230, 14);
+		JLabel lblSeleccioneMetodoDe = new JLabel("Seleccione un metodo de aproximaci¨®n");
+		lblSeleccioneMetodoDe.setBounds(10, 390, 500, 50);
+		lblSeleccioneMetodoDe.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(lblSeleccioneMetodoDe);
 		
 		JComboBox<MetodoMinimosCuadrados> comboBox = new JComboBox<MetodoMinimosCuadrados>();
@@ -113,9 +116,9 @@ public class IngresarDatosView extends JDialog {
 		comboBox.addItem(new ExponencialMinimosCuadrados());
 		comboBox.addItem(new PotencialMinimosCuadrados());
 		comboBox.addItem(new HiperbolaMinimosCuadrados());
-		comboBox.setBounds(10, 440, 600, 30);
+		comboBox.setBounds(10, 430, 600, 40);
+		comboBox.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(comboBox);
-		
 		JButton btnAproximarMediante = new JButton("Aproximar mediante");
 		btnAproximarMediante.addActionListener(new ActionListener() {
 			@Override
@@ -130,6 +133,7 @@ public class IngresarDatosView extends JDialog {
 			}
 		});
 		btnAproximarMediante.setBounds(100, 500, 400, 40);
+		btnAproximarMediante.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnAproximarMediante);
 	}
 }
