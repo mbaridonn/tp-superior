@@ -19,7 +19,7 @@ public interface MetodoMinimosCuadrados {
 				//Calcula la sumatoria de columna
 				sumatoria += Double.parseDouble(tableModel.getValueAt(i, j).toString());
 			}
-			sumatorias[j] = sumatoria;	
+			sumatorias[j] = sumatoria;
 		}
 		return sumatorias;
 	};
