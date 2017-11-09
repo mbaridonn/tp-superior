@@ -121,7 +121,7 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		Matrix matrizResultados = ingresarDatosController.getMatrizResultados();
 		double a = matrizResultados.get(0, 0);
 		double b = matrizResultados.get(1, 0);
-		double B = (Double) Math.log(b);
+		double B = (Double) Math.pow(Math.E,b);
 		return a * entrada + B;
 	}
 
