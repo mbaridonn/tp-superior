@@ -15,21 +15,27 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		return "Exponencial Minimos Cuadrados";
 	}
 	
-	@Override
-	public void generarCalculos(DefaultTableModel tableModel) {
-		tableModel.addColumn("Xi=xi", completarTerceraColumna(tableModel));
-		tableModel.addColumn("Yi=ln yi", completarCuartaColumna(tableModel));
-		tableModel.addColumn("Xi^2", resultadosXElevadoAUnaPotencia(tableModel,2));
-		tableModel.addColumn("Xi*Yi", completarQuintaColumna(tableModel));
-		tableModel.addRow(obtenerSumatorias(tableModel));
-		
+	// 0. xi 1. yi 2. Yi = ln(yi) 3. xi^2 4. xi * Yi = xi * ln(yi)
+	
+	//columna 2. Yi = ln(yi)
+	private Double[] CompletarSegundaColumna(DefaultTableModel tableModel) {
+		int cantFilas = tableModel.getRowCount();
+		 //0 xi, 1 yi, 2 Yi, 3 xi^2, 4 Yi * xi 
+		int indiceColumnaY = 1;
+		Double resultados[] = new Double[cantFilas];
+		for(int i = 0; i < cantFilas; i++ ) {
+			double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
+			resultados[i] = (Double) Math.log(valorDeY);
+		}
+		return resultados;
 	}
 	
-	//
-	private Double[] completarQuintaColumna(DefaultTableModel tableModel) {
-		return resultadosYPorx(tableModel);
+	//columna 3. xi^2
+	private Double[] completarTerceraColumna(DefaultTableModel tableModel) {
+		return resultadosXElevadoAUnaPotencia(tableModel, 2);
 	}
 	
+	//columna 4. xi * Yi = xi * ln(yi)
 	private Double[] resultadosYPorx(DefaultTableModel tableModel) {
 		int cantFilas = tableModel.getRowCount();
 		int indiceColumnaX = 0; //0 xi, 1 yi, 2 Yi, 3 xi^2, 4 Yi * xi 
@@ -42,31 +48,18 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		}
 		return resultados;
 	}
+
+	@Override
+	public void generarCalculos(DefaultTableModel tableModel) {
+		Double dataSegundaColumna[] = CompletarSegundaColumna(tableModel);
+		tableModel.addColumn("Yi = ln(yi)", dataSegundaColumna);
+		Double dataTerceraColumna[] = completarTerceraColumna(tableModel);
+		tableModel.addColumn("xi^2", dataTerceraColumna);
+		Double dataCuartaColumna[] = resultadosYPorx(tableModel);
+		tableModel.addColumn("Yi*xi", dataCuartaColumna);
+		tableModel.addRow(obtenerSumatorias(tableModel));
+	}
 	
-	//ln yi
-	private Double[] completarCuartaColumna(DefaultTableModel tableModel) {
-		int cantFilas = tableModel.getRowCount();
-		int indiceColumnaY = 1;
-		Double resultados[] = new Double[cantFilas];
-		for(int i = 0; i < cantFilas; i++ ) {
-			double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
-			resultados[i] = Math.log(valorDeY);
-		}
-		return resultados;
-	}
-
-	//xi
-	private Double[] completarTerceraColumna(DefaultTableModel tableModel) {
-		int cantFilas = tableModel.getRowCount();
-		int indiceColumnaX = 1;
-		Double resultados[] = new Double[cantFilas];
-		for(int i = 0; i < cantFilas; i++ ) {
-			double valorDeX = valorEnCelda(i,indiceColumnaX,tableModel);
-			resultados[i] = valorDeX;
-		}
-		return resultados;
-	}
-
 	@Override
 	public String resolverSistemaEcuaciones(DefaultTableModel tableModel) {
 		int cantPuntos = tableModel.getRowCount() - 1;
