@@ -106,14 +106,29 @@ public class HiperbolaMinimosCuadrados implements MetodoMinimosCuadrados{
 	//B = b/a
 	@Override
 	public String[] sistemasDeEcuaciones(DefaultTableModel tableModel) {
-		String[] sistemasDeEcuaciones = new String[1];
+		String[] sistemasDeEcuaciones = new String[2];
+		int cantPuntos = tableModel.getRowCount() - 1;
+		Double sum_x = (Double) tableModel.getValueAt(cantPuntos, 0);
+		Double sum_y = (Double) tableModel.getValueAt(cantPuntos, 2);
+		Double sum_xCuadrado = (Double) tableModel.getValueAt(cantPuntos, 3);
+		Double sum_xPorY = (Double) tableModel.getValueAt(cantPuntos, 4);
+		
+		String primeraEcuacion = sum_xCuadrado + " a " + "+ " + sum_x + " b " + "= " + sum_xPorY;
+		String segundaEcuacion = sum_x + " a " + "+ " + cantPuntos + " b " + "= " + sum_y;
+		
+		sistemasDeEcuaciones[0] = primeraEcuacion;
+		sistemasDeEcuaciones[1] = segundaEcuacion;
+		
 		return sistemasDeEcuaciones;
 	}
 
 	@Override
 	public double obtenerImagen(double entrada) {
-		// TODO Auto-generated method stub
-		return 0;
+		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
+		Matrix matrizResultados = ingresarDatosController.getMatrizResultados();
+		double a = matrizResultados.get(0, 0);
+		double b = matrizResultados.get(1, 0);
+		return a * entrada + b;
 	}
 
 }
