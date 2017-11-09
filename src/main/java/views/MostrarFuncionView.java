@@ -13,7 +13,7 @@ public class MostrarFuncionView extends JDialog{
 	
 	public MostrarFuncionView() {
 		setTitle("Funcion obtenida");
-		setBounds(500, 400, 650, 300);
+		setBounds(300, 200, 650, 300);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);

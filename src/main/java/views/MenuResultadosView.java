@@ -12,7 +12,7 @@ public class MenuResultadosView extends JDialog{
 
 	public MenuResultadosView() {
 		setTitle("Menu Resultados");
-		setBounds(500, 350, 650, 300);
+		setBounds(300, 200, 650, 267);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);

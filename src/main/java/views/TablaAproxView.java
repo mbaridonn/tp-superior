@@ -9,8 +9,11 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import controllers.IngresarDatosController;
+import model.ExponencialMinimosCuadrados;
+import model.HiperbolaMinimosCuadrados;
 import model.MetodoMinimosCuadrados;
 import model.ParabolaMinimosCuadrados;
+import model.PotencialMinimosCuadrados;
 import model.RectaMinimosCuadrados;
 
 public class TablaAproxView extends JFrame{
@@ -19,14 +22,14 @@ public class TablaAproxView extends JFrame{
 	
 	public TablaAproxView() {
 		setTitle("Tabla Aproximaciones");
-		setBounds(100, 100, 358, 335);
+		setBounds(0, 200, 1350, 335);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
 		contentPanel.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 21, 322, 144);
+		scrollPane.setBounds(10, 21, 1314, 144);
 		contentPanel.add(scrollPane);
 		
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
@@ -40,19 +43,28 @@ public class TablaAproxView extends JFrame{
 
 		MetodoMinimosCuadrados rectaMinimosCuadrados = new RectaMinimosCuadrados();
 		MetodoMinimosCuadrados parabolaMinimosCuadrados = new ParabolaMinimosCuadrados();
+		MetodoMinimosCuadrados hiperbolaMinimosCuadrados = new HiperbolaMinimosCuadrados();
+		MetodoMinimosCuadrados exponencialMinimosCuadrados = new ExponencialMinimosCuadrados();
+		MetodoMinimosCuadrados potencialMinimosCuadrados = new PotencialMinimosCuadrados();
 		
 		agregarColumnaImagen(tableModelCreada, rectaMinimosCuadrados);
 		agregarColumnaImagen(tableModelCreada, parabolaMinimosCuadrados);
+		agregarColumnaImagen(tableModelCreada, hiperbolaMinimosCuadrados);
+		agregarColumnaImagen(tableModelCreada, exponencialMinimosCuadrados);
+		agregarColumnaImagen(tableModelCreada, potencialMinimosCuadrados);
 		
 		agregarColumnasError(tableModelCreada, rectaMinimosCuadrados, 2);
 		agregarColumnasError(tableModelCreada, parabolaMinimosCuadrados, 3);
+		agregarColumnasError(tableModelCreada, hiperbolaMinimosCuadrados, 4);
+		agregarColumnasError(tableModelCreada, exponencialMinimosCuadrados, 5);
+		agregarColumnasError(tableModelCreada, potencialMinimosCuadrados, 6);
 		
 		JTable table = new JTable(tableModelCreada);
 		scrollPane.setViewportView(table);
 		
 		String nombreMetodoMasAproximante = metodoMasAproximante().toString();
-		JLabel lblElMetodoQue = new JLabel("El metodo que mas se aproxima es: " + nombreMetodoMasAproximante);
-		lblElMetodoQue.setBounds(10, 213, 322, 14);
+		JLabel lblElMetodoQue = new JLabel("El metodo que mas se aproxima es: " + "");
+		lblElMetodoQue.setBounds(212, 213, 322, 14);
 		contentPanel.add(lblElMetodoQue);
 	}
 	
@@ -82,7 +94,10 @@ public class TablaAproxView extends JFrame{
 		int cantFilas = tableModel.getRowCount();
 		Double[] errores = new Double[cantFilas];
 		for(int fila = 0; fila < cantFilas; fila++) {
-			errores[fila] = valorEnCelda(fila, 2, tableModel) - valorEnCelda(fila, columna, tableModel);
+			Double valor = valorEnCelda(fila, 2, tableModel) - valorEnCelda(fila, columna, tableModel);
+			if(valor < 0)
+				valor = valor * -1;
+			errores[fila] = valor;
 		}
 		return errores;
 	}

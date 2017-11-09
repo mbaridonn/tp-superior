@@ -34,7 +34,7 @@ public class GraficoView extends JFrame{
 	
 	public GraficoView() {
 		setTitle("Grafico");
-		setBounds(700, 200, 650, 660);
+		setBounds(300, 200, 650, 660);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -44,10 +44,8 @@ public class GraficoView extends JFrame{
 		Plot2DPanel plot = new Plot2DPanel();
 		plot.addLinePlot("Funcion", entradas, salidas);
 		setContentPane(plot);
-		/*
-		 * Si quiero que arranque maximizado, usar:
-		 * setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-		 */
+		setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
+
 		setVisible(true);
 	}
 

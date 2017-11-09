@@ -16,7 +16,7 @@ public class CalculoView extends JDialog {
 	
 	public CalculoView(){
 		setTitle("Obtener Calculos");
-		setBounds(700, 300, 650, 500);
+		setBounds(300, 200, 650, 500);
 		setFont(new java.awt.Font("Tahoma", 0, 20)); 
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -37,7 +37,7 @@ public class CalculoView extends JDialog {
 		lblTablaDeSumatorias.setFont(new java.awt.Font("Tahoma", 0, 20)); 
 		contentPanel.add(lblTablaDeSumatorias);
 		
-		JLabel lblnota = new JLabel("* La ¨²ltima fila es la sumatoria de cada columna.");
+		JLabel lblnota = new JLabel("* La Ãºltima fila es la sumatoria de cada columna.");
 		lblnota.setBounds(10, 250, 550, 20);
 		lblnota.setFont(new java.awt.Font("Tahoma", 0, 20)); 
 		contentPanel.add(lblnota);

@@ -30,7 +30,7 @@ public class MenuPrincipal extends JFrame {
 	public MenuPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("TP Superior");
-		setBounds(500, 300, 650, 300);
+		setBounds(300, 200, 650, 185);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -48,18 +48,6 @@ public class MenuPrincipal extends JFrame {
 		btnIngresarDatos.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnIngresarDatos);
 
-		JButton btnNewButton_1 = new JButton("Comparar Aproximaciones");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				CompararAproxView compararAproxView = new CompararAproxView();
-				compararAproxView.setVisible(true);
-			}
-		});
-		btnNewButton_1.setBounds(10, 80, 600, 50);
-		btnNewButton_1.setFont(new java.awt.Font("Tahoma", 0, 20));
-		contentPanel.add(btnNewButton_1);
-
 		JButton btnFinalizar = new JButton("Finalizar");
 		btnFinalizar.addActionListener(new ActionListener() {
 			@Override
@@ -67,7 +55,7 @@ public class MenuPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnFinalizar.setBounds(10, 150, 600, 50);
+		btnFinalizar.setBounds(10, 71, 600, 50);
 		btnFinalizar.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnFinalizar);
 	}

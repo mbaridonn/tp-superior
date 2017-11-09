@@ -24,6 +24,7 @@ import model.MetodoMinimosCuadrados;
 import model.ParabolaMinimosCuadrados;
 import model.PotencialMinimosCuadrados;
 import model.RectaMinimosCuadrados;
+import java.awt.Font;
 
 public class IngresarDatosView extends JDialog {
 
@@ -32,7 +33,7 @@ public class IngresarDatosView extends JDialog {
 
 	public IngresarDatosView() {
 		setTitle("Ingresar Datos");
-		setBounds(700, 200, 650, 660);
+		setBounds(300, 100, 650, 660);
 		contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -105,7 +106,7 @@ public class IngresarDatosView extends JDialog {
 		spinner.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(spinner);
 		
-		JLabel lblSeleccioneMetodoDe = new JLabel("Seleccione un metodo de aproximaci¨®n");
+		JLabel lblSeleccioneMetodoDe = new JLabel("Seleccione un metodo de aproximación:");
 		lblSeleccioneMetodoDe.setBounds(10, 390, 500, 50);
 		lblSeleccioneMetodoDe.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(lblSeleccioneMetodoDe);
@@ -138,7 +139,22 @@ public class IngresarDatosView extends JDialog {
 		btnAproximarMediante.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnAproximarMediante);
 		
-		JButton btnNewButton = new JButton("Comparar aproximaciones");
+		JButton btnCompararAproximaciones = new JButton("Comparar Aproximaciones");
+		btnCompararAproximaciones.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCompararAproximaciones.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ingresarDatosController.setTableModel(model);
+				ingresarDatosController.setCantidadDecimales((int) numberModel.getValue());
+				TablaAproxView tablaAproxView = new TablaAproxView();
+				tablaAproxView.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnCompararAproximaciones.setBounds(100, 551, 400, 40);
+		contentPanel.add(btnCompararAproximaciones);
+		
+		/*JButton btnNewButton = new JButton("Comparar aproximaciones");
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -150,6 +166,6 @@ public class IngresarDatosView extends JDialog {
 			}
 		});
 		btnNewButton.setBounds(10, 297, 226, 25);
-		contentPanel.add(btnNewButton);
+		contentPanel.add(btnNewButton);*/
 	}
 }
