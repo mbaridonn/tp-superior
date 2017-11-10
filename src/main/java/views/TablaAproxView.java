@@ -1,5 +1,8 @@
 package views;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -62,17 +65,86 @@ public class TablaAproxView extends JFrame{
 		JTable table = new JTable(tableModelCreada);
 		scrollPane.setViewportView(table);
 		
-		String nombreMetodoMasAproximante = metodoMasAproximante().toString();
-		JLabel lblElMetodoQue = new JLabel("El metodo que mas se aproxima es: " + "");
-		lblElMetodoQue.setBounds(212, 213, 322, 14);
+		String nombreMetodoMasAproximante = metodoMasAproximante(tableModelCreada).toString();
+		JLabel lblElMetodoQue = new JLabel("El m¨¦todo que mejor se aproxima es: " + nombreMetodoMasAproximante);
+		lblElMetodoQue.setBounds(212, 213, 600, 50);
+		lblElMetodoQue.setFont(new java.awt.Font("Tahoma", 0, 20)); 
 		contentPanel.add(lblElMetodoQue);
 	}
 	
-	private MetodoMinimosCuadrados metodoMasAproximante() {
+	private MetodoMinimosCuadrados metodoMasAproximante(DefaultTableModel table) {
 		//TERMINAR
-		MetodoMinimosCuadrados metodo = new RectaMinimosCuadrados();
+		//sumatoria de errores cols: 2, 3, 4, 5, 6
+		table.addRow(sumatorias(table)); //agrego sumatoria para todas las columnas
+		
+		//comparar min entre 7, 8, 9, 10, 11
+		int indice = menorError(table);
+		MetodoMinimosCuadrados metodo = null;
+		
+		switch(indice){
+		case 7:
+			metodo = new RectaMinimosCuadrados();
+			break;
+		case 8:
+			metodo = new ParabolaMinimosCuadrados();
+			break;
+		case 9:
+			metodo = new HiperbolaMinimosCuadrados();
+			break;
+		case 10:
+			metodo = new ExponencialMinimosCuadrados();
+			break;
+		case 11:
+			metodo = new PotencialMinimosCuadrados();
+			break;
+		default:
+			break;
+		
+		}
+		
+		
 		return metodo;
 	}
+	
+		private Double[] sumatorias(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
+		Double sumatorias[] = new Double[tableModel.getColumnCount()];
+		int cantFilas = tableModel.getRowCount();
+		int cantColumnas = tableModel.getColumnCount();
+		Double sumatoria;
+		for(int j = 0; j < cantColumnas; j++) {
+			sumatoria = 0.0;
+			for(int i = 0; i < cantFilas; i++) {
+				//Calcula la sumatoria de columna
+				//sumatoria += Double.parseDouble(tableModel.getValueAt(i, j).toString());
+				sumatoria += round(valorEnCelda(i, j, tableModel), cantDecimales);
+			}
+			sumatorias[j] = sumatoria;
+		}
+		return sumatorias;
+	}
+	private int menorError(DefaultTableModel tableModel){
+			int indice = 0;
+			Double error = 0.0;
+			Double errorMenor = 10000.0;
+			int cantPuntos = tableModel.getRowCount() - 1;
+			for(int i=7; i<12; i++){
+				error = (Double) tableModel.getValueAt(cantPuntos, i);
+				if(error<errorMenor){
+					errorMenor = error;
+					indice = i;
+				}
+			}	
+			return indice;
+		}
+	
+		private double round(double value, int places) {
+		    if (places < 0) throw new IllegalArgumentException();
+
+		    BigDecimal bd = new BigDecimal(value);
+		    bd = bd.setScale(places, RoundingMode.HALF_UP);
+		    return bd.doubleValue();
+		}
 	
 	private void agregarColumnaImagen(DefaultTableModel tableModelCreada, MetodoMinimosCuadrados metodoMinimosCuadrados) {
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
