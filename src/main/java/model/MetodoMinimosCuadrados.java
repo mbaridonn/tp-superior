@@ -1,6 +1,11 @@
 package model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import javax.swing.table.DefaultTableModel;
+
+import controllers.IngresarDatosController;
 
 public interface MetodoMinimosCuadrados {
 	
@@ -9,6 +14,7 @@ public interface MetodoMinimosCuadrados {
 	public String[] sistemasDeEcuaciones(DefaultTableModel tableModel);
 	
 	default Double[] obtenerSumatorias(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 		Double sumatorias[] = new Double[tableModel.getColumnCount()];
 		int cantFilas = tableModel.getRowCount();
 		int cantColumnas = tableModel.getColumnCount();
@@ -17,9 +23,10 @@ public interface MetodoMinimosCuadrados {
 			sumatoria = 0.0;
 			for(int i = 0; i < cantFilas; i++) {
 				//Calcula la sumatoria de columna
-				sumatoria += Double.parseDouble(tableModel.getValueAt(i, j).toString());
+				//sumatoria += Double.parseDouble(tableModel.getValueAt(i, j).toString());
+				sumatoria += round(valorEnCelda(i, j, tableModel), cantDecimales);
 			}
-			sumatorias[j] = sumatoria;	
+			sumatorias[j] = sumatoria;
 		}
 		return sumatorias;
 	};
@@ -53,5 +60,13 @@ public interface MetodoMinimosCuadrados {
 	}
 	
 	public double obtenerImagen(double entrada);
+	
+	default double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
 
 }

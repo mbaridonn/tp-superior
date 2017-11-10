@@ -4,6 +4,7 @@ import javax.swing.table.DefaultTableModel;
 
 import Jama.Matrix;
 import model.MetodoMinimosCuadrados;
+import model.RectaMinimosCuadrados;
 
 public class IngresarDatosController {
 
@@ -68,6 +69,17 @@ public class IngresarDatosController {
 
 	public double obtenerImagen(double entrada) {
 		return metodoMinimosCuadrados.obtenerImagen(entrada);
+	}
+
+	public void setTableModelResultados(DefaultTableModel model) {
+		setTableModel(model);
+		Double[] data = {1.0, 2.0, 3.0};
+		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
+		ingresarDatosController.setMetodoMinimosCuadrados(new RectaMinimosCuadrados());
+		ingresarDatosController.generarCalculos();
+		ingresarDatosController.resolverSistemaEcuaciones();
+		model.addColumn("Recta", data);
+		setTableModel(model);
 	}
 	
 }

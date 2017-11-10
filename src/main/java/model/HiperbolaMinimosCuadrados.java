@@ -20,11 +20,12 @@ public class HiperbolaMinimosCuadrados implements MetodoMinimosCuadrados{
 		}
 		
 	private Double[] resultadosUnoSobreY(DefaultTableModel tableModel) {
+		int cantDecimales = IngresarDatosController.getInstance().getCantidadDecimales();
 			int cantFilas = tableModel.getRowCount();
 			int indiceColumnaY = 1;
 			Double resultados[] = new Double[cantFilas];
 			for(int i = 0; i < cantFilas; i++ ) {
-				double valorDeY = valorEnCelda(i,indiceColumnaY,tableModel);
+				double valorDeY = round(valorEnCelda(i,indiceColumnaY,tableModel), cantDecimales);
 				resultados[i] = 1 / valorDeY;
 			}
 			return resultados;
@@ -92,9 +93,16 @@ public class HiperbolaMinimosCuadrados implements MetodoMinimosCuadrados{
 	    
 	    int cantDecimales = ingresarDatosContoller.getCantidadDecimales();
 	    
-        String resultado =  String.format("%."+cantDecimales+"f", matrizResultados.get(0, 0)) 
+	    double a = matrizResultados.get(0, 0);
+		//A = 1/a
+		double A= 1/a;
+		double b = matrizResultados.get(1, 0);
+		//B = b/a
+		double B = b/A;
+	    
+        String resultado =  String.format("%."+cantDecimales+"f", A) 
         					+ "*x + " 
-        					+ String.format("%."+cantDecimales+"f", matrizResultados.get(1, 0));
+        					+ String.format("%."+cantDecimales+"f",B);
         
 		return resultado;		
 	}
@@ -127,8 +135,13 @@ public class HiperbolaMinimosCuadrados implements MetodoMinimosCuadrados{
 		IngresarDatosController ingresarDatosController = IngresarDatosController.getInstance();
 		Matrix matrizResultados = ingresarDatosController.getMatrizResultados();
 		double a = matrizResultados.get(0, 0);
+		//A = 1/a
+		double A= 1/a;
 		double b = matrizResultados.get(1, 0);
-		return a * entrada + b;
+		//B = b/a
+		double B = b/A;
+		return A * entrada + B;
+		
 	}
 
 }

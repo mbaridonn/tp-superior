@@ -12,7 +12,7 @@ public class MenuResultadosView extends JDialog{
 
 	public MenuResultadosView() {
 		setTitle("Menu Resultados");
-		setBounds(500, 350, 650, 300);
+		setBounds(300, 200, 650, 267);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -27,6 +27,7 @@ public class MenuResultadosView extends JDialog{
 			}
 		});
 		btnMostrarFuncion.setBounds(10, 10, 600, 50);
+		btnMostrarFuncion.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnMostrarFuncion);
 		
 		JButton btnObtenerCalculo = new JButton("Obtener calculo");
@@ -38,6 +39,7 @@ public class MenuResultadosView extends JDialog{
 			}
 		});
 		btnObtenerCalculo.setBounds(10, 80, 600, 50);
+		btnObtenerCalculo.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnObtenerCalculo);
 		
 		JButton btnGraficar = new JButton("Graficar");
@@ -48,6 +50,7 @@ public class MenuResultadosView extends JDialog{
 			}
 		});
 		btnGraficar.setBounds(10, 150, 600, 50);
+		btnGraficar.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(btnGraficar);
 		
 	}
