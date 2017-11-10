@@ -19,6 +19,55 @@ public class IngresarDatosController {
 		this.tableModel = tableModel;		
 	}
 	
+	public double[] generarEntradas(){
+		double init = menorValorEnDominio();
+		int cantidadDePuntos = (int) Math.ceil((mayorValorEnDominio() - menorValorEnDominio())*100);
+		double[] entradas = new double[cantidadDePuntos];
+		int i = 0;
+		for(i = 0;i<cantidadDePuntos;i++) {
+			entradas[i] = init;
+			init+=0.01;
+		}
+		return entradas;
+	}
+	
+	private double mayorValorEnDominio() {
+		double [] valores = obtenerValoresDeDominio();
+		double valorMaximo = 0;
+		for(int i = 0; i < valores.length; i++) {
+			valorMaximo = Math.max(valorMaximo, valores[i]);
+		}
+		return valorMaximo;
+	}
+	
+	private double menorValorEnDominio() {
+			double [] valores = obtenerValoresDeDominio();
+			double valorMinimo = 0;
+			for(int i = 0; i < valores.length; i++) {
+				if(i==0) valorMinimo = valores[i];
+				valorMinimo = Math.min(valorMinimo, valores[i]);
+			}
+			return valorMinimo;
+		
+	}
+	
+	private double[] obtenerValoresDeDominio() {
+		double [] valores = new double[tableModel.getRowCount() - 1];
+		for(int indiceFila = 0; indiceFila < tableModel.getRowCount() - 1;indiceFila++) {
+			valores[indiceFila] = Double.parseDouble(tableModel.getValueAt(indiceFila, 0).toString());
+		}
+		return valores;
+	}
+
+	public double[] generarSalidas(double[] entradas) {
+		int cantidadDeEntradas = entradas.length;
+		double[] salidas = new double[cantidadDeEntradas];
+		for(int i = 0; i < cantidadDeEntradas; i++) {
+			salidas[i] = obtenerImagen(entradas[i]);
+		}
+		return salidas;
+	}
+	
 	public DefaultTableModel getTableModel() {
 		return tableModel;
 	}

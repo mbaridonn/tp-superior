@@ -13,7 +13,7 @@ public class MostrarFuncionView extends JDialog{
 	
 	public MostrarFuncionView() {
 		setTitle("Funcion obtenida");
-		setBounds(300, 200, 650, 300);
+		setBounds(300, 200, 908, 300);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPanel);
@@ -28,7 +28,7 @@ public class MostrarFuncionView extends JDialog{
 		
 		JLabel label = new JLabel("");
 		label.setText(resultado);
-		label.setBounds(250, 90, 230, 50);
+		label.setBounds(250, 90, 632, 50);
 		label.setFont(new java.awt.Font("Tahoma", 0, 20));
 		contentPanel.add(label);
 	}
