@@ -22,7 +22,7 @@ public class IngresarDatosController {
 	public double[] generarEntradas(){
 		double init = menorValorEnDominio();
 		int cantidadDePuntos = (int) Math.ceil((mayorValorEnDominio() - menorValorEnDominio())*100);
-		double[] entradas = new double[cantidadDePuntos];
+		double[] entradas = new double[cantidadDePuntos+1];
 		int i = 0;
 		for(i = 0;i<=cantidadDePuntos;i++) {
 			entradas[i] = init;
