@@ -91,9 +91,9 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		double b = matrizResultados.get(1, 0);
 		double B = (Double) Math.pow(Math.E,b);
 	    
-        String resultado =  String.format("%."+cantDecimales+"f", a) 
+        String resultado =  String.format("%."+cantDecimales+"f", B) 
         					+ "e^ ( " 
-        					+ String.format("%."+cantDecimales+"f",B)
+        					+ String.format("%."+cantDecimales+"f",a)
         					+"x)";
         
 		return resultado;		
@@ -125,7 +125,7 @@ public class ExponencialMinimosCuadrados implements MetodoMinimosCuadrados {
 		double a = matrizResultados.get(0, 0);
 		double b = matrizResultados.get(1, 0);
 		double B = (Double) Math.pow(Math.E,b);
-		return a * entrada + B;
+		return B * ((Double) Math.pow(Math.E,a * entrada));
 	}
 
 }
