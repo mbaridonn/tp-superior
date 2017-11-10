@@ -24,7 +24,7 @@ public class IngresarDatosController {
 		int cantidadDePuntos = (int) Math.ceil((mayorValorEnDominio() - menorValorEnDominio())*100);
 		double[] entradas = new double[cantidadDePuntos];
 		int i = 0;
-		for(i = 0;i<cantidadDePuntos;i++) {
+		for(i = 0;i<=cantidadDePuntos;i++) {
 			entradas[i] = init;
 			init+=0.01;
 		}
