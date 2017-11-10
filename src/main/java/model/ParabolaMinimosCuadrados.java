@@ -101,6 +101,6 @@ public class ParabolaMinimosCuadrados implements MetodoMinimosCuadrados{
 		double c = matrizResultados.get(0, 0);
 	    double b = matrizResultados.get(1, 0);
 	    double a = matrizResultados.get(2, 0);
-		return a*Math.pow(entrada, 2) + b*entrada + c;
+		return a * Math.pow(entrada, 2) + b * entrada + c;
 	}
 }
